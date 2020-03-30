@@ -1,0 +1,84 @@
+backend:
+  name: git-gateway
+  branch: master
+
+local_backend: true
+
+site_url: https://www.alltagshunde-rheinbach.de
+
+locale: 'de'
+
+media_folder: content/assets
+public_folder: /assets
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+collections:
+
+  - name: navigation
+    label: Navigation
+    extension: yml
+    editor:
+     preview: false
+    files:
+      - label: Einträge
+        name: entries
+        file: "content/site/navigation.yml"
+        fields:
+          - label: Link
+            name: link
+            widget: list
+            fields:
+              - {label: Seite, name: page, widget: relation, collection: pages, searchFields: [title], valueField: title, hint: "Die Seite, die in der Navigation verlinkt werden soll."}
+              - {label: Titel, name: title, widget: string, required: false, hint: "Nur benötigt, wenn nicht der Titel der Seite verwendet werden soll."}
+
+  - name: pages
+    label: Seiten
+    label_singular: Seite
+    folder: "content/pages"
+    path: '{{slug}}/index'
+    extension: yml
+    media_folder: ''
+    public_folder: ''
+    slug: "{{slug}}"
+    preview_path: "{{slug}}"
+    create: true
+    editor:
+     preview: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - name: buildingBlocks
+        label: Bausteine
+        label_singular: Baustein
+        widget: list
+        types:
+        - name: text
+          label: Text
+          widget: object
+          fields:
+            - { label: Überschrift, name: heading, widget: string, required: false }
+            - { label: Text, name: text, widget: markdown, buttons: [bold, italic, link, bulleted-list, numbered-list], editorComponents: [] }
+        - name: image
+          label: Bild
+          widget: object
+          fields:
+            - { label: Bild, name: image, widget: image }
+            - { label: Unterschrift, name: caption, widget: string, required: false }
+
+  - label: Footer
+    name: footer
+    editor:
+     preview: false
+    files:
+      - label: Partner
+        name: partners
+        file: "content/site/partners.yml"
+        fields:
+          - label: Partner
+            name: partner
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: URL, name: url, widget: string}
