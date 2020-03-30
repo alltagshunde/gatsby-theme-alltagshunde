@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Flex, Box, Heading } from 'rebass'
 import { css } from '@emotion/core'
 
-const Text = ({ width, title, children, headingLevel, headingSize, headingCentered }) => {
+const Text = ({ width, heading, text, headingLevel, headingSize, headingCentered }) => {
 
     const responsiveWidth = width === '1/3' ? [1, 1 / 2, 1 / 3] : width === '1/2' ? [1, 1 / 2] : 1
     const headingTag = `h${headingLevel}`
@@ -21,8 +21,8 @@ const Text = ({ width, title, children, headingLevel, headingSize, headingCenter
 
     return (
         <Flex width={responsiveWidth} my={4} flexDirection='column' alignItems={headingAlign}>
-            <Heading variant='caps' as={headingTag} fontSize={headingFontSize} mb={1}>{title}</Heading>
-            <Box width='1' css={noInnerMargin} dangerouslySetInnerHTML={{ __html: children }} />
+            <Heading variant='caps' as={headingTag} fontSize={headingFontSize} mb={1}>{heading}</Heading>
+            <Box width='1' css={noInnerMargin} dangerouslySetInnerHTML={{ __html: text }} />
         </Flex>
     )
 }
@@ -30,7 +30,7 @@ const Text = ({ width, title, children, headingLevel, headingSize, headingCenter
 Text.propTypes = {
     width: PropTypes.string,
     heading: PropTypes.string,
-    children: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
     headingLevel: PropTypes.number,
     headingSize: PropTypes.number,
     headingCentered: PropTypes.bool,

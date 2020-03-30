@@ -11,10 +11,10 @@ const BuildingBlock = ({ type, ...specific }) => {
 
   switch (type) {
     case 'text':
-      component = <Text title={specific.heading}>{specific.text}</Text>
+      component = <Text {...specific} />
       break;
     case 'image':
-      component = <Image title={specific.caption} src={specific.image} />
+      component = <Image {...specific} />
       break;
   }
 

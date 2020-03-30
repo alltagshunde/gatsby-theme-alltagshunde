@@ -4,7 +4,7 @@ backend:
 
 local_backend: true
 
-site_url: https://www.alltagshunde-rheinbach.de
+site_url: https://hopeful-lamarr-a320e6.netlify.com
 
 locale: 'de'
 
@@ -42,8 +42,8 @@ collections:
     extension: yml
     media_folder: ''
     public_folder: ''
-    slug: "{{slug}}"
-    preview_path: "{{slug}}"
+#    slug: "{{slug}}"
+    preview_path: "{{title}}"
     create: true
     editor:
      preview: false
@@ -60,12 +60,17 @@ collections:
           fields:
             - { label: Ãœberschrift, name: heading, widget: string, required: false }
             - { label: Text, name: text, widget: markdown, buttons: [bold, italic, link, bulleted-list, numbered-list], editorComponents: [] }
+            - { label: Breite, name: width, widget: select, options: [{label: "100%", value: "1"}, {label: "50%", value: "1/2"}, {label: "33%", value: "1/3"}], default: "1" }
+            - { label: Ãœberschrift Level, name: headingLevel, widget: select, options: ["1", "2", "3", "4", "5", "6"], default: "1", hint: "1 ist am größten, 6 am kleinsten. Das Level solle aber nicht nur nach der Größe ausgesucht werden, sondern die Struktur der Seite repräsentieren. Das ist auch für SEO wichtig. Falls die Darstellungsgröße vom Level abweichen soll, kann 'Überschrift Größe' gesetzt werden." }
+            - { label: Ãœberschrift Größe, name: headingSize, widget: select, required: false, options: ["1", "2", "3", "4", "5", "6"], hint: "1 ist am größten, 6 am kleinsten." }
+            - { label: Ãœberschrift zentrieren, name: headingCentered, widget: boolean, default: true }
         - name: image
           label: Bild
           widget: object
           fields:
             - { label: Bild, name: image, widget: image }
-            - { label: Unterschrift, name: caption, widget: string, required: false }
+            - { label: Breite, name: width, widget: select, options: [{label: "100%", value: "1"}, {label: "50%", value: "1/2"}, {label: "33%", value: "1/3"}], default: "1" }
+#            - { label: Unterschrift, name: caption, widget: string, required: false }
 
   - label: Footer
     name: footer

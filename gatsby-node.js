@@ -104,11 +104,23 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         type: {
           type: 'String!'
         },
+        width: {
+          type: 'String'
+        },
         heading: {
           type: 'String'
         },
         text: {
           type: 'String'
+        },
+        headingLevel: {
+          type: 'String'
+        },
+        headingSize: {
+          type: 'String'
+        },
+        headingCentered: {
+          type: 'Boolean'
         },
         image: {
           type: 'File'
@@ -140,8 +152,12 @@ exports.createPages = async ({ graphql, actions }) => {
               buildingBlocks {
                   index
                   type
+                  width
                   heading
                   text
+                  headingLevel
+                  headingSize
+                  headingCentered
                   image {
                       relativePath
                   }
