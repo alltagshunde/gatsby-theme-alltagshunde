@@ -5,7 +5,7 @@ import { css } from '@emotion/core'
 
 const Text = ({ width, heading, text, headingLevel, headingSize, headingCentered }) => {
 
-    const responsiveWidth = width === '1/3' ? [1, 1 / 2, 1 / 3] : width === '1/2' ? [1, 1 / 2] : 1
+    const responsiveWidth = 1//width === '1/3' ? [1, 1 / 2, 1 / 3] : width === '1/2' ? [1, 1 / 2] : 1
     const headingTag = `h${headingLevel}`
     const headingAlign = headingCentered ? 'center' : 'start'
     const headingSizeIndex = (headingSize || headingLevel) - 1

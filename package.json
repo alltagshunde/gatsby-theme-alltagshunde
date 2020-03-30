@@ -1,6 +1,6 @@
 {
   "name": "@alltagshunde/gatsby-theme-alltagshunde",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Andreas Zahnen",
   "license": "MIT",
   "scripts": {
@@ -16,6 +16,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@reach/router": "^1.3.3",
+    "@rebass/layout": "^4.0.6",
     "@rebass/preset": "^4.0.5",
     "emotion-theming": "^10.0.27",
     "gatsby": "^2.19.45",

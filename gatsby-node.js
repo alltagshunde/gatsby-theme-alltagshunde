@@ -107,6 +107,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         width: {
           type: 'String'
         },
+        innerWidth: {
+          type: 'String'
+        },
         heading: {
           type: 'String'
         },
@@ -153,6 +156,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   index
                   type
                   width
+                  innerWidth
                   heading
                   text
                   headingLevel
