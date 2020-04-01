@@ -65,6 +65,11 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         slug: String
       }
     `,
+    `
+      type SiteYamlLink {
+        title: String
+      }
+    `,
     schema.buildObjectType({
       name: "PagesYaml",
       fields: {
