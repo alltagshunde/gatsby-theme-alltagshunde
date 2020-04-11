@@ -76,6 +76,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         title: {
           type: "String",
         },
+        isLandingPage: {
+          type: 'Boolean'
+        },
         fields: {
           type: "PagesYamlFields",
         },
@@ -154,6 +157,7 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               id
               title
+              isLandingPage
               fields {
                 slug
               }
@@ -171,6 +175,8 @@ exports.createPages = async ({ graphql, actions }) => {
                       relativePath
                   }
                   caption
+                  isBanner
+                  button
               }
             }
           }
@@ -201,7 +207,7 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     }
 
-    if (index === 0) {
+    if (page.node.isLandingPage) {
       const slug = '/'
       createPage({
         path: slug,

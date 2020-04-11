@@ -49,8 +49,9 @@ const Layout = ({ children }) => {
   const pages = {}
   data.allPagesYaml.edges.forEach(({ node }) => pages[node.title] = node.fields.slug)
   const navigation = data.allSiteYaml.edges.length > 0 ? data.allSiteYaml.edges[0] : []
-  const links = navigation.node.link.map(({ page, title }, index) => ({ path: index === 0 ? '/' : pages[page], title: title || page }))
+  const links = navigation.node.link.map(({ page, title }, index) => ({ path: pages[page], title: title || page }))
 
+  // TODO: put in theme, responsive
   const flexbox = css`
     grid-gap: 10px;
   `

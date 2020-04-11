@@ -5,7 +5,7 @@ import { useTheme } from 'emotion-theming'
 import { Box, Flex, Image } from 'rebass'
 
 import Link from './Link'
-import { LogoIcons, LogoText } from './Logo'
+import { LogoIcons, LogoText, LogoTextLink } from './Logo'
 
 const Header = ({ pages }) => {
   const theme = useTheme()
@@ -27,7 +27,9 @@ const Header = ({ pages }) => {
       </Box>
       <Box bg='secondary' width={1} py={3} css={sticky} >
         <Flex variant='container' justifyContent='space-between' alignItems='center' flexWrap='wrap'>
-          <Image as={LogoText} width={1 / 4} />
+          <Box width={1 / 4}>
+            <LogoTextLink to='/' />
+          </Box>
           <Flex color='white'>
             {pages.map(({ title, path }) => (
               <Box>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Flex, Box, Heading } from 'rebass'
 import { css } from '@emotion/core'
 
-const Text = ({ width, heading, text, headingLevel, headingSize, headingCentered }) => {
+const Text = ({ width, heading, text, headingLevel, headingSize, headingCentered, span }) => {
 
     const responsiveWidth = 1//width === '1/3' ? [1, 1 / 2, 1 / 3] : width === '1/2' ? [1, 1 / 2] : 1
     const headingTag = `h${headingLevel}`
@@ -20,7 +20,7 @@ const Text = ({ width, heading, text, headingLevel, headingSize, headingCentered
     `
 
     return (
-        <Flex width={responsiveWidth} my={4} flexDirection='column' alignItems={headingAlign}>
+        <Flex sx={{ gridColumn: span }} width={responsiveWidth} my={4} flexDirection='column' alignItems={headingAlign}>
             <Heading variant='caps' as={headingTag} fontSize={headingFontSize} mb={1}>{heading}</Heading>
             <Box width='1' css={noInnerMargin} dangerouslySetInnerHTML={{ __html: text }} />
         </Flex>

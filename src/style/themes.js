@@ -1,11 +1,12 @@
 import preset from '@rebass/preset'
+import color from 'color'
 
 const base = {
     ...preset,
     colors: {
         taupe: '#444331',
         zinnwalditeBrown: '#201900',
-        zinnwalditeBrown2: '#241C00',
+        zinnwalditeBrown2: '#241C00',//rgb(36,28,0)
         licorice: '#1C1600',
         citron: '#8ab31d',
         maximumGreen: '#5aa02c',
@@ -59,6 +60,8 @@ const themes = {
             ...base.colors,
             primary: base.colors.maximumGreen,
             secondary: base.colors.zinnwalditeBrown2,
+            primaryMuted: color(base.colors.maximumGreen).fade(0.3).string(),
+            secondaryMuted: color(base.colors.zinnwalditeBrown2).fade(0.3).string(),
             background: base.colors.white,
             text: base.colors.zinnwalditeBrown2,
         },

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import Text from './Text'
 import Image from './Image'
+import Card from "./Card"
 
 const BuildingBlock = ({ type, ...specific }) => {
 
@@ -15,6 +16,9 @@ const BuildingBlock = ({ type, ...specific }) => {
       break;
     case 'image':
       component = <Image {...specific} />
+      break;
+    case 'card':
+      component = <Card {...specific} />
       break;
   }
 
