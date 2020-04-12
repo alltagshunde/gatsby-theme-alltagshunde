@@ -148,7 +148,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const Page = require.resolve(`./src/components/Page/index.jsx`)
   const result = await graphql(`
       {
         allPagesYaml
@@ -158,6 +157,7 @@ exports.createPages = async ({ graphql, actions }) => {
               id
               title
               isLandingPage
+              parentPage
               fields {
                 slug
               }
@@ -177,6 +177,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   caption
                   isBanner
                   button
+                  buttonLink
               }
             }
           }
@@ -189,45 +190,64 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
-  // Create blog posts pages.
-  const pages = result.data.allPagesYaml.edges
+  // Create pages.
+  const Page = require.resolve(`./src/components/Page/index.jsx`)
 
-  pages.forEach((page, index) => {
-    //console.log('PAGE', page.node.buildingBlocks)
+  const pages = result.data.allPagesYaml.edges.map(hydratePage)
 
-    if (page.node.buildingBlocks) {
-      page.node.buildingBlocks.forEach(buildingBlock => {
-        if (buildingBlock.text) {
-          const html = remark()
-            .use(remarkHTML)
-            .processSync(buildingBlock.text)
-            .toString();
-          buildingBlock.text = html;
-        }
-      })
-    }
-
-    if (page.node.isLandingPage) {
-      const slug = '/'
-      createPage({
-        path: slug,
-        component: Page,
-        context: {
-          title: page.node.title,
-          slug: slug,
-          buildingBlocks: page.node.buildingBlocks
-        },
-      })
-    }
+  pages.forEach((page) => {
+    //console.log('PAGE', page.slug, page.buildingBlocks)
 
     createPage({
-      path: page.node.fields.slug,
+      path: page.slug,
       component: Page,
-      context: {
-        title: page.node.title,
-        slug: page.node.fields.slug,
-        buildingBlocks: page.node.buildingBlocks
-      },
+      context: page,
     })
+
   })
+}
+
+
+const hydratePage = (page, index, pages) => ({
+  title: page.node.title,
+  slug: getSlug(page, pages),
+  buildingBlocks: hydrateBuildingBlocks(page, pages)
+})
+
+const getSlug = (page, pages) => {
+  if (page.node.isLandingPage) {
+    return '/'
+  }
+
+  if (page.node.parentPage) {
+    const parentPage = pages.find(page2 => page2.node.title === page.node.parentPage)
+    return getSlug(parentPage, pages) + page.node.fields.slug.substr(1)
+  }
+
+  return page.node.fields.slug
+}
+
+const hydrateBuildingBlocks = (page, pages) => {
+  if (page.node.buildingBlocks) {
+    return page.node.buildingBlocks.map(buildingBlock => {
+      const text = buildingBlock.text
+        ? remark()
+          .use(remarkHTML)
+          .processSync(buildingBlock.text)
+          .toString()
+        : undefined
+
+      const buttonLink = buildingBlock.buttonLink
+        ? getSlug(pages.find(page => page.node.title === buildingBlock.buttonLink), pages)
+        : undefined
+
+      return {
+        ...buildingBlock,
+        text,
+        buttonLink
+      }
+    })
+  }
+
+  return []
 }

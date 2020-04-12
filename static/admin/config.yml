@@ -67,6 +67,14 @@ collections:
         required: false
         default: false
         hint: "Soll dies die Startseite sein, die auch im Logo verlinkt wird? Kann natürlich nur für eine Seite gesetzt werden."
+      - label: Übergeordnete Seite
+        name: parentPage
+        widget: relation
+        collection: pages
+        searchFields: [title]
+        valueField: title
+        required: false
+        hint: "Auswählen wenn diese Seite eine Unterseite der Hauptseiten (z.B. Betreuung) ist."
       - name: buildingBlocks
         label: Bausteine
         label_singular: Baustein
@@ -169,10 +177,19 @@ collections:
               buttons: [bold, italic, link, bulleted-list, numbered-list]
               editorComponents: []
               required: false
-            - label: Button
+            - label: Verlinkte Seite
+              name: buttonLink
+              widget: relation
+              collection: pages
+              searchFields: [title]
+              valueField: title
+              required: false
+              hint: "Die Seite, die bei Klick auf den Button geöffnet wird."
+            - label: Link-Text
               name: button
               widget: string
               required: false
+              hint: "Der Text der im Button angezeigt wird."
             - label: Äußere Breite
               name: width
               widget: select

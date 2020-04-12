@@ -7,8 +7,9 @@ import { Link, Text } from 'rebass'
 import { Link as RouteLink } from 'gatsby'
 
 const NavbarLink = ({ to, children }) => {
+    console.log('TO', to, children)
     const theme = useTheme()
-    const match = useMatch(to);
+    const match = useMatch(`${to}*`);
 
     const color = css`
         color: ${match ? theme.colors.primary : theme.colors.white};
