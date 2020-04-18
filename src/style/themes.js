@@ -31,13 +31,14 @@ const base = {
         body: 'Roboto, system-ui, sans-serif',
     },
     breakpoints: [
-        '720px', '1280px', '1920px',
+        '720px', '1280px', '1600px',
     ],
     variants: {
         ...preset.variants,
         container: {
-            maxWidth: ['540px', '704px', '1152px', '1664px'],
-            mx: 'auto',
+            // maxWidth: ['540px', '688px', '1152px', '1664px'],
+            // mx: 'auto',
+            px: [4, 5, 6],
             flexGrow: 1,
         },
         link: {
@@ -61,7 +62,9 @@ const themes = {
             primary: base.colors.maximumGreen,
             secondary: base.colors.zinnwalditeBrown2,
             primaryMuted: color(base.colors.maximumGreen).fade(0.3).string(),
+            primaryMuted2: color(base.colors.maximumGreen).fade(0.8).string(),
             secondaryMuted: color(base.colors.zinnwalditeBrown2).fade(0.3).string(),// nearly umber #5F5945
+            secondaryMuted2: color(base.colors.zinnwalditeBrown2).fade(0.8).string(),// nearly umber #5F5945
             background: base.colors.white,
             text: base.colors.zinnwalditeBrown2,
         },

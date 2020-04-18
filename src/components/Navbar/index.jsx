@@ -1,14 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { css } from '@emotion/core'
-import { useTheme } from 'emotion-theming'
 import { Box, Flex, Image } from 'rebass'
 
 import Link from './Link'
-import { LogoIcons, LogoText, LogoTextLink } from './Logo'
+import { LogoIcons, LogoTextLink } from './Logo'
 
 const Header = ({ pages }) => {
-  const theme = useTheme()
 
   const sticky = css`
     @supports (position: sticky) {

@@ -7,22 +7,16 @@ import Card from "./Card"
 
 const BuildingBlock = ({ type, ...specific }) => {
 
-  let component = null;
-  console.log(type, specific)
-
   switch (type) {
     case 'text':
-      component = <Text {...specific} />
-      break;
+      return <Text {...specific} />
     case 'image':
-      component = <Image {...specific} />
-      break;
+      return <Image {...specific} />
     case 'card':
-      component = <Card {...specific} />
-      break;
+      return <Card {...specific} />
+    default:
+      return null
   }
-
-  return component
 }
 
 BuildingBlock.propTypes = {

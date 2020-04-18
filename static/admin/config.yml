@@ -91,8 +91,9 @@ collections:
             - label: Text
               name: text
               widget: markdown
-              buttons: [bold, italic, link, bulleted-list, numbered-list]
+              buttons: [bold, italic, heading-three, heading-four, link, bulleted-list, numbered-list]
               editorComponents: []
+              required: false
             - label: Äußere Breite
               name: width
               widget: select
@@ -120,6 +121,11 @@ collections:
               name: headingCentered
               widget: boolean
               default: true
+            - label: Überschrift in Akzentfarbe
+              name: headingColorPrimary
+              widget: boolean
+              default: false
+              required: false
         - name: image
           label: Bild
           widget: object

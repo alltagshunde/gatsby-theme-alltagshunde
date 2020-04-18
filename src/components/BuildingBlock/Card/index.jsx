@@ -1,27 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Flex, Box, Heading, Button } from 'rebass'
-import { css } from '@emotion/core'
+import { Flex, Heading } from 'rebass'
 import Image from '../Image'
 import Link from './Link'
+import HtmlText from '../Text/HtmlText'
 
 const Card = ({ span, heading, text, image, button, buttonLink }) => {
 
-    //TODO: variant?
-    const noInnerMargin = css`
-        & p {
-            margin-bottom: 0;
-        }
-        & p:first-child {
-            margin-top: 0;
-        }
-    `
-
     return (
-        <Flex variant='card' sx={{ gridColumn: span, '& > div,h3,a': { marginBottom: [1, 2, 3] } }} bg='secondaryMuted' color='white' width={1} my={4} flexDirection='column' justifyContent='space-between' alignItems='center'>
+        <Flex variant='card'
+            sx={{ gridColumn: span, '& > div,h3,a': { marginBottom: [1, 2, 3] } }}
+            bg='secondaryMuted'
+            color='white'
+            width={1}
+            flexDirection='column'
+            justifyContent='space-between'
+            alignItems='center'>
             {image && <Image image={image} isBanner={true} />}
             {heading && <Heading as='h3' fontSize={3} variant='caps' textAlign='center'>{heading}</Heading>}
-            {text && <Box width='1' css={noInnerMargin} dangerouslySetInnerHTML={{ __html: text }} />}
+            {text && <HtmlText text={text} />}
             {button && <Link to={buttonLink}>{button}</Link>}
         </Flex>
     )

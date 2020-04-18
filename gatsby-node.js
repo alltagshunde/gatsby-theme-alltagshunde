@@ -133,6 +133,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         headingCentered: {
           type: 'Boolean'
         },
+        headingColorPrimary: {
+          type: 'Boolean'
+        },
         image: {
           type: 'File'
         },
@@ -171,6 +174,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   headingLevel
                   headingSize
                   headingCentered
+                  headingColorPrimary
                   image {
                       relativePath
                   }

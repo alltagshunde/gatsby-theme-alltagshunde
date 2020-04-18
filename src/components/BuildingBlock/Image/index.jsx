@@ -3,22 +3,25 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { Box } from "rebass"
-import { css } from "@emotion/core"
 
 
-const Image = ({ caption, image, innerWidth, duoTone, span, isBanner, mb }) => {
+const Image = ({ image, width, innerWidth, span }) => {
     const data = useStaticQuery(defaultQuery)
 
     const match = useMemo(() => (
         data.allFile.edges.find(({ node }) => image.relativePath === node.relativePath)
     ), [data, image])
 
-    const responsiveWidth = innerWidth === '1/3' ? 1 / 3 : innerWidth === '1/2' ? 1 / 2 : 1
-    const verticalMargin = isBanner ? 0 : 4;
+    const responsiveWidth = innerWidth === '1/3'
+        ? 1 / 3
+        : innerWidth === '1/2'
+            ? 1 / 2
+            // : width === '1/4'
+            //     ? [1, 3 / 4, 1]
+            : 1
 
-    //TODO: set margins from outside?
     return (
-        <Box width={responsiveWidth} my={verticalMargin} mx='auto' sx={{ gridColumn: span }} mb={mb}>
+        <Box width={responsiveWidth} display={['none', 'block']} mx='auto' verticalAlign='center' sx={{ gridColumn: span }}>
             <Img loading='eager' fadeIn={true} fluid={match.node.childImageSharp.fluid} />
         </Box>
     )
@@ -58,6 +61,7 @@ const defaultQuery = graphql`
         }
     }
 `
+/*
 const duoToneQuery = graphql`
     query {
         allFile( filter: { internal: { mediaType: { regex: "images/" } } } ) {
@@ -74,3 +78,4 @@ const duoToneQuery = graphql`
         }
     }
 `
+*/
