@@ -4,9 +4,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Global, css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming'
 
-import { global, themes } from '../style';
-import Navbar from "./Navbar"
-import Footer from "./Footer"
+import { global, themes } from '../../../style';
+import Navbar from "../../Navbar"
+import Footer from "../../Footer"
 import { Box, Flex } from "rebass";
 
 

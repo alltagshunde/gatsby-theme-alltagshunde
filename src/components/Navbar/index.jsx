@@ -17,7 +17,7 @@ const Header = ({ pages }) => {
         z-index: 1020;
     }
   `
-  console.log('PAGES', pages)
+  //TODO: Logo width responsive, for sm either burger menu or Logo above Links
   return (
     <>
       <Box bg='white' pt={3}>

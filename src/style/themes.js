@@ -61,7 +61,7 @@ const themes = {
             primary: base.colors.maximumGreen,
             secondary: base.colors.zinnwalditeBrown2,
             primaryMuted: color(base.colors.maximumGreen).fade(0.3).string(),
-            secondaryMuted: color(base.colors.zinnwalditeBrown2).fade(0.3).string(),
+            secondaryMuted: color(base.colors.zinnwalditeBrown2).fade(0.3).string(),// nearly umber #5F5945
             background: base.colors.white,
             text: base.colors.zinnwalditeBrown2,
         },

@@ -1,8 +1,8 @@
 import React from "react"
 
 import { Tiles } from '@rebass/layout'
-import Layout from "../layout"
-import SEO from "../seo"
+import Layout from "./Layout"
+import SEO from "./Seo"
 import BuildingBlock from '../BuildingBlock'
 import { css } from "@emotion/core"
 

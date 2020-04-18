@@ -17,16 +17,10 @@ const Card = ({ span, heading, text, image, button, buttonLink }) => {
         }
     `
 
-    // TODO: put in theme, responsive
-    const flexbox = css`
-        grid-gap: 10px;
-    `
-
-    //TODO: cms button link with page ref
     return (
-        <Flex variant='card' sx={{ gridColumn: span, gridGap: '30px' }} bg='secondaryMuted' color='white' width={1} my={4} flexDirection='column' justifyContent='space-between' alignItems='center'>
+        <Flex variant='card' sx={{ gridColumn: span, '& > div,h3,a': { marginBottom: [1, 2, 3] } }} bg='secondaryMuted' color='white' width={1} my={4} flexDirection='column' justifyContent='space-between' alignItems='center'>
             {image && <Image image={image} isBanner={true} />}
-            {heading && <Heading as='h3' fontSize={4}>{heading}</Heading>}
+            {heading && <Heading as='h3' fontSize={3} variant='caps' textAlign='center'>{heading}</Heading>}
             {text && <Box width='1' css={noInnerMargin} dangerouslySetInnerHTML={{ __html: text }} />}
             {button && <Link to={buttonLink}>{button}</Link>}
         </Flex>
