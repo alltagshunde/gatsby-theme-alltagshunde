@@ -2,10 +2,11 @@ import React, { useMemo } from "react"
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import { Box } from "rebass"
+import { Box, Flex } from "rebass"
+import { Link as RouteLink } from 'gatsby'
 
 
-const Image = ({ image, width, innerWidth, span }) => {
+const Image = ({ image, width, innerWidth, span, isBanner, to }) => {
     const data = useStaticQuery(defaultQuery)
 
     const match = useMemo(() => (
@@ -21,9 +22,15 @@ const Image = ({ image, width, innerWidth, span }) => {
             : 1
 
     return (
-        <Box width={responsiveWidth} display={['none', 'block']} mx='auto' verticalAlign='center' sx={{ gridColumn: span }}>
-            <Img loading='eager' fadeIn={true} fluid={match.node.childImageSharp.fluid} />
-        </Box>
+        <Flex width={1} justifyContent='center' alignItems='center' sx={{ gridColumn: span }}>
+            <Box width={responsiveWidth} display={[isBanner ? 'block' : 'none', 'block']} mx='auto' alignItems='center' sx={{ '& > div': { borderRadius: isBanner ? 0 : 'default' } }}>
+                {to
+                    ? <RouteLink to={to}>
+                        <Img loading='eager' fadeIn={true} fluid={match.node.childImageSharp.fluid} />
+                    </RouteLink>
+                    : <Img loading='eager' fadeIn={true} fluid={match.node.childImageSharp.fluid} />}
+            </Box>
+        </Flex>
     )
 }
 

@@ -31,6 +31,14 @@ const globalCss = theme => css`
     ol, ul {
         list-style: none;
     }
+    ul li::before {
+        content: '>';
+        color: ${theme.colors.primary}; 
+        font-weight: bold; 
+        display: inline-block; 
+        width: 1.5em; 
+        margin-left: -1.5em; 
+    }
     blockquote, q {
         quotes: none;
     }

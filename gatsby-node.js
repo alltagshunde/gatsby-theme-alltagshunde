@@ -142,6 +142,15 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         caption: {
           type: 'String'
         },
+        whatsapp: {
+          type: 'String'
+        },
+        facebook: {
+          type: 'String'
+        },
+        email: {
+          type: 'String'
+        },
       }
     }),
   ]
@@ -182,6 +191,9 @@ exports.createPages = async ({ graphql, actions }) => {
                   isBanner
                   button
                   buttonLink
+                  whatsapp
+                  facebook
+                  email
               }
             }
           }

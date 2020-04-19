@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import Text from './Text'
 import Image from './Image'
 import Card from "./Card"
+import Contact from "./Contact"
+import Message from "./Message"
 
 const BuildingBlock = ({ type, ...specific }) => {
 
@@ -14,6 +16,10 @@ const BuildingBlock = ({ type, ...specific }) => {
       return <Image {...specific} />
     case 'card':
       return <Card {...specific} />
+    case 'contact':
+      return <Contact {...specific} />
+    case 'message':
+      return <Message {...specific} />
     default:
       return null
   }

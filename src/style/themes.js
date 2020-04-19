@@ -35,6 +35,15 @@ const base = {
     ],
     variants: {
         ...preset.variants,
+        avatar: {
+            size: [48, 64, 96],
+            borderRadius: 'circle',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: 'background',
+            bg: 'primary',
+            fontSize: [4, 5, 6],
+        },
         container: {
             // maxWidth: ['540px', '688px', '1152px', '1664px'],
             // mx: 'auto',
@@ -51,7 +60,7 @@ const base = {
     logo: {
         image: '/icons/logo-image-alt.svg',
         text: '/icons/logo-text.svg',
-    }
+    },
 }
 
 const themes = {
@@ -71,7 +80,42 @@ const themes = {
         logo: {
             ...base.logo,
             text: '/icons/logo-text-light-alt.svg',
-        }
+        },
+        forms: {
+            input: {
+                my: [1, 1, 1],
+                color: 'secondary',
+                bg: 'background',
+                outline: 'none',
+                border: 'none',
+                fontFamily: base.fonts.body,
+                '&:focus': {
+                    boxShadow: `0 0 0 2px ${base.colors.maximumGreen}`,
+                },
+                '&::placeholder': {
+                    color: color(base.colors.zinnwalditeBrown2).fade(0.75).string(),
+                }
+            },
+            select: {
+            },
+            textarea: {
+                my: [1, 1, 1],
+                color: 'secondary',
+                bg: 'background',
+                outline: 'none',
+                border: 'none',
+                fontFamily: base.fonts.body,
+                '&:focus': {
+                    boxShadow: `0 0 0 2px ${base.colors.maximumGreen}`,
+                },
+                '&::placeholder': {
+                    color: color(base.colors.zinnwalditeBrown2).fade(0.75).string(),
+                }
+            },
+            label: {},
+            radio: {},
+            checkbox: {},
+        },
     },
     light: {
         ...base,
