@@ -237,7 +237,10 @@ const getSlug = (page, pages) => {
 
   if (page.node.parentPage) {
     const parentPage = pages.find(page2 => page2.node.title === page.node.parentPage)
-    return getSlug(parentPage, pages) + page.node.fields.slug.substr(1)
+    if (parentPage) {
+      return getSlug(parentPage, pages) + page.node.fields.slug.substr(1)
+    }
+    console.warn("Parent not found " + page.node.parentPage + " for page " + page.node.title);
   }
 
   return page.node.fields.slug
@@ -254,7 +257,7 @@ const hydrateBuildingBlocks = (page, pages) => {
         : undefined
 
       const buttonLink = buildingBlock.buttonLink
-        ? getSlug(pages.find(page => page.node.title === buildingBlock.buttonLink), pages)
+        ? getLink(page, pages, buildingBlock.buttonLink)
         : undefined
 
       return {
@@ -266,4 +269,15 @@ const hydrateBuildingBlocks = (page, pages) => {
   }
 
   return []
+}
+
+const getLink = (sourcePage, pages, link) => {
+  const linkedPage = pages.find(page => page.node.title === link)
+  if (linkedPage) {
+    return getSlug(linkedPage, pages)
+  }
+
+  console.warn("Linked page not found " + link + " for page " + sourcePage.node.title);
+
+  return undefined
 }
