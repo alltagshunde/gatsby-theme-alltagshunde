@@ -58,6 +58,7 @@ const computeRows = buildingBlocks => {
     } else {
       if (hasCurrentRow && !rows.includes(currentRow)) {
         rows.push(currentRow)
+        currentRow = {}
       }
       rows.push({ type: 'container', buildingBlock: buildingBlock })
     }
