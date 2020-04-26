@@ -1,6 +1,6 @@
 {
   "name": "@alltagshunde/gatsby-theme-alltagshunde",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "author": "Andreas Zahnen",
   "license": "MIT",
   "scripts": {
@@ -25,12 +25,11 @@
     "@rebass/preset": "^4.0.5",
     "color": "^3.1.2",
     "emotion-theming": "^10.0.27",
-    "gatsby": "^2.19.45",
+    "gatsby": "^2.20.36",
     "gatsby-background-image": "^1.1.1",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-emotion": "^4.2.1",
     "gatsby-plugin-manifest": "^2.2.48",
-    "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-netlify-cms": "^4.2.1",
     "gatsby-plugin-offline": "^3.0.41",
     "gatsby-plugin-react-helmet": "^3.1.24",
