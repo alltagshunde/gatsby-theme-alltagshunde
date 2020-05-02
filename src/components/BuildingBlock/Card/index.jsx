@@ -26,7 +26,7 @@ const Card = ({ span, heading, text, image, button, buttonLink, innerWidth }) =>
             justifyContent='space-between'
             alignItems='center'>
             {image && <Image image={image} isBanner={true} to={buttonLink} />}
-            {heading && <Heading as='h3' fontSize={3} variant='caps' textAlign='center'>{heading}</Heading>}
+            {heading && <Heading as='h3' fontSize={[2, 3]} mt={[2, 3]} variant='caps' textAlign='center'>{heading}</Heading>}
             {text && <HtmlText text={text} />}
             {button && <Link to={buttonLink}>{button}</Link>}
         </Flex>

@@ -8,10 +8,11 @@ const Legal = ({ currentYear }) => {
 
     return (
         <>
-            <Text>&copy; Alltagshunde Rheinbach {copyrightYears}</Text>
+            <Text>&copy; Alltagshunde {copyrightYears}</Text>
             <Flex>
-                <Link href='/privacy'>Datenschutz</Link>
-                <Link href='/legal' ml={3}>Impressum</Link>
+                <Link href='/agb'>AGB</Link>
+                <Link href='/datenschutz' ml={3}>Datenschutz</Link>
+                <Link href='/impressum' ml={3}>Impressum</Link>
             </Flex>
         </>
     )

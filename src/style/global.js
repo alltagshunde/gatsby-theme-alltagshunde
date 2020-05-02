@@ -53,6 +53,7 @@ const globalCss = theme => css`
     }
     a {
         text-decoration: none;
+        color: ${theme.colors.primary}
     }
 `;
 

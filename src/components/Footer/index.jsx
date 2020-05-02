@@ -29,10 +29,10 @@ const Footer = () => {
 
     return (
         <Box bg='secondary' >
-            <Flex color='white' variant='container' py={5} justifyContent='space-between' flexWrap='wrap'>
+            {/*<Flex color='white' variant='container' py={5} justifyContent='space-between' flexWrap='wrap'>
                 <Info partner={partner} />
             </Flex>
-            <Box bg='white' height='1px'></Box>
+    <Box bg='white' height='1px'></Box>*/}
             <Flex color='white' variant='container' py={5} justifyContent='space-between' flexWrap='wrap'>
                 <Legal currentYear={currentYear} />
             </Flex>

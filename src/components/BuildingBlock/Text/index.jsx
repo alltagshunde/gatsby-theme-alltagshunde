@@ -7,7 +7,7 @@ import WithHeading from '../WithHeading'
 const Text = ({ text, ...rest }) => {
 
     return (
-        <WithHeading {...rest}>
+        <WithHeading {...rest} noMargin={!text}>
             <HtmlText text={text} />
         </WithHeading>
     )

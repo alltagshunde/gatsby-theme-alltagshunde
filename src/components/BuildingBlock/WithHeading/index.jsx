@@ -2,18 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Flex, Heading, Box } from 'rebass'
 
-const WithHeading = ({ heading, children, headingLevel, headingSize, headingCentered, headingColorPrimary, span, my }) => {
+const WithHeading = ({ heading, children, headingLevel, headingSize, headingCentered, headingColorPrimary, span, my, noMargin }) => {
 
     const headingTag = `h${headingLevel}`
     const headingAlign = headingCentered ? 'center' : 'start'
     const headingSizeIndex = (headingSize || headingLevel) - 1
-    const headingFontSize = [6, 5, 4, 3, 2, 1][headingSizeIndex]
-    const headingMargin = [4, 4, 4, 3, 3, 3][headingSizeIndex]
+    const headingFontSize = [[4, 5, 6], [3, 4, 5], [2, 3, 4], [1, 2, 3], [1, 2], 1][headingSizeIndex]
+    const headingMargin = noMargin && headingSizeIndex > 0 ? 0 : [[2, 3, 4], [2, 3, 4], [2, 3, 4], [1, 2, 3], [1, 2, 3], [1, 2, 3]][headingSizeIndex]
     const headingColor = headingColorPrimary ? 'primary' : 'secondary'
 
     return (
         <Flex sx={{ gridColumn: span }} py={my} width={1} flexDirection='column' alignItems={headingAlign}>
-            <Box mb={headingMargin}
+            {heading && <Box mb={headingMargin}
                 sx={{
                     px: headingLevel == 1 ? [2, 3, 4] : 0,
                     borderBottomStyle: 'solid',
@@ -26,7 +26,7 @@ const WithHeading = ({ heading, children, headingLevel, headingSize, headingCent
                     fontSize={headingFontSize}>
                     {heading}
                 </Heading>
-            </Box>
+            </Box>}
             {children}
         </Flex>
     )

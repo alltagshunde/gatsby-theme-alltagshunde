@@ -151,6 +151,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         email: {
           type: 'String'
         },
+        isColored: {
+          type: 'Boolean'
+        },
       }
     }),
   ]
@@ -194,6 +197,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   whatsapp
                   facebook
                   email
+                  isColored
               }
             }
           }
