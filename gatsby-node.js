@@ -2,6 +2,8 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const remark = require('remark');
 const remarkHTML = require('remark-html');
+const externalLinks = require('remark-external-links')
+const smartypants = require('retext-smartypants')
 const fs = require("fs")
 
 // Make sure the data directory exists
@@ -255,6 +257,8 @@ const hydrateBuildingBlocks = (page, pages) => {
     return page.node.buildingBlocks.map(buildingBlock => {
       const text = buildingBlock.text
         ? remark()
+          .use(externalLinks)
+          .use(smartypants)
           .use(remarkHTML)
           .processSync(buildingBlock.text)
           .toString()

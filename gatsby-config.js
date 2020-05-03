@@ -13,21 +13,6 @@ module.exports = ({ contentPath = "content" }) => ({
         typeName: ({ node }) => pathToType(node.relativeDirectory),
       },
     },
-
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1664,
-            },
-          },
-          `gatsby-remark-smartypants`,
-        ],
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -36,8 +21,8 @@ module.exports = ({ contentPath = "content" }) => ({
         name: `Alltagshunde Rheinbach - Carolin Henseler`,
         short_name: `Alltagshunde`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#ffffff`,
+        theme_color: `#5aa02c`,
         display: `minimal-ui`,
         icon: `content/assets/icon2.png`, // This path is relative to the root of the site.
       },
