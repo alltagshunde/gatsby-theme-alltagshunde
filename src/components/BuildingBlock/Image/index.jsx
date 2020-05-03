@@ -6,7 +6,7 @@ import { Box, Flex } from "rebass"
 import { Link as RouteLink } from 'gatsby'
 
 
-const Image = ({ image, width, innerWidth, span, isBanner, to }) => {
+const Image = ({ image, width, innerWidth, span, isBanner, showOnMobile, to }) => {
     const data = useStaticQuery(defaultQuery)
 
     const match = useMemo(() => (
@@ -23,7 +23,11 @@ const Image = ({ image, width, innerWidth, span, isBanner, to }) => {
 
     return (
         <Flex width={1} justifyContent='center' alignItems='center' sx={{ gridColumn: span }}>
-            <Box width={responsiveWidth} display={[isBanner ? 'block' : 'none', 'block']} mx='auto' alignItems='center' sx={{ '& > div': { borderRadius: isBanner ? 0 : 'default' } }}>
+            <Box width={responsiveWidth}
+                display={[isBanner || showOnMobile ? 'block' : 'none', 'block']}
+                mx='auto'
+                alignItems='center'
+                sx={{ '& > div, & > a > div': { borderRadius: isBanner ? 0 : 'default' } }}>
                 {to
                     ? <RouteLink to={to}>
                         <Img loading='eager' fadeIn={true} fluid={match.node.childImageSharp.fluid} />

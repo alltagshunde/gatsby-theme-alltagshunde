@@ -17,8 +17,8 @@ const Page = ({ pageContext }) => {
     <Layout>
       <SEO title={title} description={description} />
       {rows.map((row, index) => row.type === 'container'
-        ? <Box width={1} flexGrow={1} px={row.buildingBlock.isBanner ? 0 : [4, 5, 6]} bg={getRowColor(index, row.buildingBlock.isColored)} py={row.buildingBlock.isBanner ? 0 : verticalMargin}><BuildingBlock verticalMargin={verticalMargin} {...row.buildingBlock} /></Box>
-        : <Tiles px={[4, 5, 6]} bg={getRowColor(index, row.buildingBlocks[0].isColored)} sx={{ gridGap: [2, 3, 4] }} css={css`width: 100%;`} py={verticalMargin} columns={getResponsiveColumns(row.columns, row.buildingBlocks.length)}>
+        ? <Box width={1} flexGrow={1} px={row.buildingBlock.isBanner ? 0 : [4, 5, 6]} bg={getRowColor(row.buildingBlock.isColored)} py={row.buildingBlock.isBanner ? 0 : verticalMargin}><BuildingBlock verticalMargin={verticalMargin} {...row.buildingBlock} /></Box>
+        : <Tiles px={[4, 5, 6]} bg={getRowColor(row.buildingBlocks[0].isColored)} sx={{ gridGap: [2, 3, 4] }} css={css`width: 100%;`} py={verticalMargin} columns={getResponsiveColumns(row.columns, row.buildingBlocks.length)}>
           {row.buildingBlocks.map(buildingBlock => <BuildingBlock {...buildingBlock} />)}
         </Tiles>
       )}
@@ -28,7 +28,7 @@ const Page = ({ pageContext }) => {
 
 export default Page
 
-const getRowColor = (index, isColored) => isColored ? 'primaryMuted2' : 'background'
+const getRowColor = (isColored) => isColored ? 'primaryMuted2' : 'background'
 
 const computeRows = buildingBlocks => {
   console.log('BB', buildingBlocks)
