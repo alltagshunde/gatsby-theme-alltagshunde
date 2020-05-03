@@ -2,7 +2,7 @@ import React, { useMemo } from "react"
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from "gatsby"
 import BackgroundImage from 'gatsby-background-image'
-import { Box, Heading, Flex, Button } from "rebass"
+import { Box, Flex, Button } from "rebass"
 import { Textarea, Input } from '@rebass/forms'
 import { css } from "@emotion/core"
 import WithHeading from "../WithHeading"

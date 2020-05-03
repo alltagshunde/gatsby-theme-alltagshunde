@@ -15,9 +15,9 @@ const WithHeading = ({ heading, children, headingLevel, headingSize, headingCent
         <Flex sx={{ gridColumn: span }} py={my} width={1} flexDirection='column' alignItems={headingAlign}>
             {heading && <Box mb={headingMargin}
                 sx={{
-                    px: headingLevel == 1 ? [2, 3, 4] : 0,
+                    px: headingLevel == 1 ? [2, 3, 4] : 0, // eslint-disable-line eqeqeq
                     borderBottomStyle: 'solid',
-                    borderBottomWidth: headingLevel == 1 ? '2px' : 0,
+                    borderBottomWidth: headingLevel == 1 ? '2px' : 0, // eslint-disable-line eqeqeq
                     borderColor: 'primary'
                 }}>
                 <Heading color={headingColor}

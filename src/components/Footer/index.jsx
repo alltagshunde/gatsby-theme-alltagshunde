@@ -1,12 +1,12 @@
 import React from 'react'
-import { useStaticQuery, graphql } from "gatsby"
+// import { useStaticQuery, graphql } from "gatsby"
 import { Box, Flex } from 'rebass'
 import Legal from './Legal'
-import Info from './Info'
+// import Info from './Info'
 
 const Footer = () => {
 
-    const data = useStaticQuery(graphql`
+    /*const data = useStaticQuery(graphql`
         query PartnerQuery {
             allSiteYaml(filter: {fields: {typ: {eq: "partner"}}}) {
                 edges {
@@ -24,7 +24,7 @@ const Footer = () => {
         }
     `)
 
-    const partner = data.allSiteYaml.edges[0].node.partner;
+    const partner = data.allSiteYaml.edges[0].node.partner;*/
     const currentYear = new Date().getFullYear();
 
     return (
