@@ -3,7 +3,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const remark = require('remark');
 const remarkHTML = require('remark-html');
 const externalLinks = require('remark-external-links')
-const smartypants = require('retext-smartypants')
+const smartypants = require('@silvenon/remark-smartypants')
 const fs = require("fs")
 
 // Make sure the data directory exists
