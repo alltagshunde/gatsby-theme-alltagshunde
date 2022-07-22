@@ -6,6 +6,7 @@ import Image from './Image'
 import Card from "./Card"
 import Contact from "./Contact"
 import Message from "./Message"
+import Booking from "./Booking"
 
 const BuildingBlock = ({ type, ...specific }) => {
 
@@ -18,6 +19,8 @@ const BuildingBlock = ({ type, ...specific }) => {
       return <Card {...specific} />
     case 'contact':
       return <Contact {...specific} />
+    case 'booking':
+      return <Booking {...specific} />
     case 'message':
       return <Message {...specific} />
     default:

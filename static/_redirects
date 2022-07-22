@@ -1,0 +1,2 @@
+/admin/* 200! Role=editor,admin
+/admin/* /login 401!
