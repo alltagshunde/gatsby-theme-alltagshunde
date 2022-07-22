@@ -1,9 +1,9 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const remark = require('remark');
-const remarkHTML = require('remark-html');
-const externalLinks = require('remark-external-links')
-const smartypants = require('@silvenon/remark-smartypants')
+const remark = require("remark")
+const remarkHTML = require("remark-html")
+const externalLinks = require("remark-external-links")
+const smartypants = require("@silvenon/remark-smartypants")
 const fs = require("fs")
 
 // Make sure the data directory exists
@@ -14,8 +14,8 @@ exports.onPreBootstrap = ({ reporter }, options) => {
     fs.mkdirSync(contentPath)
   }
 
-  const adminConfigFile = require.resolve('./static/admin/config.yml')
-  const adminPath = 'public/admin'
+  const adminConfigFile = require.resolve("./static/admin/config.yml")
+  const adminPath = "public/admin"
   if (!fs.existsSync(adminPath)) {
     reporter.info(`creating the ${adminPath} directory`)
     fs.mkdirSync(adminPath, { recursive: true })
@@ -26,8 +26,8 @@ exports.onPreBootstrap = ({ reporter }, options) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type.indexOf('Yaml') > -1) {
-    if (node.internal.type === 'SiteYaml') {
+  if (node.internal.type.indexOf("Yaml") > -1) {
+    if (node.internal.type === "SiteYaml") {
       const value = Object.keys(node)[0]
 
       createNodeField({
@@ -38,7 +38,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 
     if (node.internal.type === `PagesYaml`) {
-      const value = createFilePath({ node, getNode, basePath: 'pages/' })
+      const value = createFilePath({ node, getNode, basePath: "pages/" })
       createNodeField({
         name: `slug`,
         node,
@@ -48,7 +48,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
     //console.log(node)
   }
-
 }
 
 exports.createSchemaCustomization = ({ actions, schema }) => {
@@ -79,7 +78,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           type: "String",
         },
         isLandingPage: {
-          type: 'Boolean'
+          type: "Boolean",
         },
         fields: {
           type: "PagesYamlFields",
@@ -87,17 +86,22 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         buildingBlocks: {
           type: "[PagesYamlBuildingBlocks]",
           resolve(source, args, context, info) {
-            const buildingBlocks = context.defaultFieldResolver(source, args, context, info)
+            const buildingBlocks = context.defaultFieldResolver(
+              source,
+              args,
+              context,
+              info
+            )
 
-            if (args && args.hasOwnProperty('index')) {
+            if (args && args.hasOwnProperty("index")) {
               return [buildingBlocks[args.index]]
             }
 
             return buildingBlocks
           },
           args: {
-            index: 'Int'
-          }
+            index: "Int",
+          },
         },
       },
       interfaces: ["Node"],
@@ -109,54 +113,60 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           type: "Int!",
           resolve(source, args, context, info) {
             return info.path.prev.key
-          }
+          },
         },
         type: {
-          type: 'String!'
+          type: "String!",
         },
         width: {
-          type: 'String'
+          type: "String",
         },
         innerWidth: {
-          type: 'String'
+          type: "String",
         },
         heading: {
-          type: 'String'
+          type: "String",
         },
         text: {
-          type: 'String'
+          type: "String",
         },
         headingLevel: {
-          type: 'String'
+          type: "String",
         },
         headingSize: {
-          type: 'String'
+          type: "String",
         },
         headingCentered: {
-          type: 'Boolean'
+          type: "Boolean",
         },
         headingColorPrimary: {
-          type: 'Boolean'
+          type: "Boolean",
         },
         image: {
-          type: 'File'
+          type: "File",
         },
         caption: {
-          type: 'String'
+          type: "String",
         },
         whatsapp: {
-          type: 'String'
+          type: "String",
         },
         facebook: {
-          type: 'String'
+          type: "String",
         },
         email: {
-          type: 'String'
+          type: "String",
+        },
+        booking: {
+          type: "String",
+        },
+        bookingUrl: {
+          type: "String",
         },
         isColored: {
-          type: 'Boolean'
+          type: "Boolean",
         },
-      }
+      },
     }),
   ]
   createTypes(typeDefs)
@@ -166,47 +176,47 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const result = await graphql(`
-      {
-        allPagesYaml
-        {
-          edges {
-            node {
-              id
-              title
-              isLandingPage
-              parentPage
-              fields {
-                slug
+    {
+      allPagesYaml {
+        edges {
+          node {
+            id
+            title
+            isLandingPage
+            parentPage
+            fields {
+              slug
+            }
+            buildingBlocks {
+              index
+              type
+              width
+              innerWidth
+              heading
+              text
+              headingLevel
+              headingSize
+              headingCentered
+              headingColorPrimary
+              image {
+                relativePath
               }
-              buildingBlocks {
-                  index
-                  type
-                  width
-                  innerWidth
-                  heading
-                  text
-                  headingLevel
-                  headingSize
-                  headingCentered
-                  headingColorPrimary
-                  image {
-                      relativePath
-                  }
-                  caption
-                  isBanner
-                  button
-                  buttonLink
-                  whatsapp
-                  facebook
-                  email
-                  isColored
-              }
+              caption
+              isBanner
+              button
+              buttonLink
+              whatsapp
+              facebook
+              email
+              booking
+              bookingUrl
+              isColored
             }
           }
         }
       }
-    `
-  )
+    }
+  `)
 
   if (result.errors) {
     throw result.errors
@@ -217,7 +227,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pages = result.data.allPagesYaml.edges.map(hydratePage)
 
-  pages.forEach((page) => {
+  pages.forEach(page => {
     //console.log('PAGE', page.slug, page.buildingBlocks)
 
     createPage({
@@ -225,28 +235,33 @@ exports.createPages = async ({ graphql, actions }) => {
       component: Page,
       context: page,
     })
-
   })
 }
-
 
 const hydratePage = (page, index, pages) => ({
   title: page.node.title,
   slug: getSlug(page, pages),
-  buildingBlocks: hydrateBuildingBlocks(page, pages)
+  buildingBlocks: hydrateBuildingBlocks(page, pages),
 })
 
 const getSlug = (page, pages) => {
   if (page.node.isLandingPage) {
-    return '/'
+    return "/"
   }
 
   if (page.node.parentPage) {
-    const parentPage = pages.find(page2 => page2.node.title === page.node.parentPage)
+    const parentPage = pages.find(
+      page2 => page2.node.title === page.node.parentPage
+    )
     if (parentPage) {
       return getSlug(parentPage, pages) + page.node.fields.slug.substr(1)
     }
-    console.warn("Parent not found " + page.node.parentPage + " for page " + page.node.title);
+    console.warn(
+      "Parent not found " +
+        page.node.parentPage +
+        " for page " +
+        page.node.title
+    )
   }
 
   return page.node.fields.slug
@@ -257,11 +272,11 @@ const hydrateBuildingBlocks = (page, pages) => {
     return page.node.buildingBlocks.map(buildingBlock => {
       const text = buildingBlock.text
         ? remark()
-          .use(externalLinks)
-          .use(smartypants)
-          .use(remarkHTML)
-          .processSync(buildingBlock.text)
-          .toString()
+            .use(externalLinks)
+            .use(smartypants)
+            .use(remarkHTML)
+            .processSync(buildingBlock.text)
+            .toString()
         : undefined
 
       const buttonLink = buildingBlock.buttonLink
@@ -271,7 +286,7 @@ const hydrateBuildingBlocks = (page, pages) => {
       return {
         ...buildingBlock,
         text,
-        buttonLink
+        buttonLink,
       }
     })
   }
@@ -285,7 +300,9 @@ const getLink = (sourcePage, pages, link) => {
     return getSlug(linkedPage, pages)
   }
 
-  console.warn("Linked page not found " + link + " for page " + sourcePage.node.title);
+  console.warn(
+    "Linked page not found " + link + " for page " + sourcePage.node.title
+  )
 
   return undefined
 }
