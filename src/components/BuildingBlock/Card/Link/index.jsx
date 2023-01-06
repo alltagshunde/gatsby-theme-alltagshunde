@@ -4,7 +4,7 @@ import { Button } from 'rebass'
 import { Link as RouteLink } from 'gatsby'
 
 const CardLink = ({ to, children }) => {
-    console.log('TO2', to, children)
+    //console.log('TO2', to, children)
 
     return (
         <Button variant='primary' py={1} mt={[1, 2]} as={RouteLink} to={to}>
