@@ -4,7 +4,7 @@ backend:
 
 local_backend: true
 
-site_url: https://hopeful-lamarr-a320e6.netlify.com
+site_url: https://www.alltagshunde-training.de
 
 locale: "de"
 
@@ -34,8 +34,9 @@ collections:
                 name: page
                 widget: relation
                 collection: pages
-                searchFields: [title]
-                valueField: title
+                search_fields: [title]
+                value_field: title
+                options_length: 50
                 hint: "Die Seite, die in der Navigation verlinkt werden soll."
               - label: Titel
                 name: title
@@ -70,8 +71,9 @@ collections:
         name: parentPage
         widget: relation
         collection: pages
-        searchFields: [title]
-        valueField: title
+        search_fields: [title]
+        value_field: title
+        options_length: 50
         required: false
         hint: "Auswählen wenn diese Seite eine Unterseite der Hauptseiten (z.B. Betreuung) ist."
       - name: buildingBlocks
@@ -82,6 +84,7 @@ collections:
           - name: text
             label: Text
             widget: object
+            summary: "{{heading}}"
             fields:
               - label: Überschrift
                 name: heading
@@ -100,7 +103,7 @@ collections:
                     bulleted-list,
                     numbered-list,
                   ]
-                editorComponents: []
+                editor_components: []
                 required: false
               - label: Äußere Breite
                 name: width
@@ -138,6 +141,7 @@ collections:
           - name: image
             label: Bild
             widget: object
+            summary: "{{image}}"
             fields:
               - label: Bild
                 name: image
@@ -182,6 +186,7 @@ collections:
           - name: card
             label: Karte
             widget: object
+            summary: "{{heading}} | {{image}}"
             fields:
               - label: Bild
                 name: image
@@ -195,15 +200,16 @@ collections:
                 name: text
                 widget: markdown
                 buttons: [bold, italic, link, bulleted-list, numbered-list]
-                editorComponents: []
+                editor_components: []
                 required: false
               - label: Verlinkte Seite
                 name: buttonLink
                 widget: relation
                 collection: pages
-                searchFields: [title]
-                valueField: title
+                search_fields: [title]
+                value_field: title
                 required: false
+                options_length: 50
                 hint: "Die Seite, die bei Klick auf den Button geöffnet wird."
               - label: Link-Text
                 name: button
@@ -302,14 +308,6 @@ collections:
                 name: email
                 widget: boolean
                 default: true
-              - label: Buchung anzeigen
-                name: booking
-                widget: boolean
-                default: false
-              - label: Buchung URL
-                name: bookingUrl
-                widget: string
-                required: false
               - label: Äußere Breite
                 name: width
                 widget: select
@@ -355,6 +353,41 @@ collections:
                 default: false
                 required: false
                 hint: "Bei mehreren Bausteinen in einer Reihe zählt die Einstellung des ersten."
+          - name: booking
+            label: Buchung
+            widget: object
+            fields:
+              - label: Button Text
+                name: text
+                widget: string
+                default: Termin vereinbaren
+              - label: Terminart
+                name: appointmentType
+                widget: string
+                required: false
+              - label: Äußere Breite
+                name: width
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+              - label: Innere Breite
+                name: innerWidth
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+                required: false
 
   - label: Info
     name: info
