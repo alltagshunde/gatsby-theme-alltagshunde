@@ -17,7 +17,7 @@ const NavbarLink = ({ to, children }) => {
 
     return (
         <Link variant='nav' as={RouteLink} to={to} css={color}>
-            <Text variant='caps' fontSize={2} fontWeight='bold'>{children}</Text>
+            <Text variant='caps' fontSize={2} fontWeight='bold' sx={{whiteSpace: 'nowrap'}}>{children}</Text>
         </Link>
     )
 }
