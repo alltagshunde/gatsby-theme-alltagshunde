@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-import {Flex, Button, Box} from 'rebass'
-import Iframe from 'react-iframe'
+//import {Flex, Button, Box} from 'rebass'
+//import Iframe from 'react-iframe'
 import WithHeading from "../WithHeading"
 
 
 
 const Booking = ({text, appointmentType, innerWidth, ...rest }) => {
-    const [isOpen,setIsOpen] = React.useState(false);
+    /*const [isOpen,setIsOpen] = React.useState(false);
 
     const responsiveWidth = innerWidth === '1/3'
         ? 1 / 3
@@ -16,11 +16,11 @@ const Booking = ({text, appointmentType, innerWidth, ...rest }) => {
             ? 1 / 2
             // : width === '1/4'
             //     ? [1, 3 / 4, 1]
-            : 1
+            : 1*/
 
     return (
         <WithHeading {...rest} headingCentered={true}>
-        <Flex width={responsiveWidth} my={[1, 2]} justifyContent='space-around'>
+            {/*<Flex width={responsiveWidth} my={[1, 2]} justifyContent='space-around'>
                 <Button fontSize="2em" onClick={() => setIsOpen(true)}>Termin vereinbaren</Button>
             </Flex>
             {isOpen && <Box width="100%" height="1500px">
@@ -31,7 +31,7 @@ const Booking = ({text, appointmentType, innerWidth, ...rest }) => {
             frameBorder="0"
             scrolling="no"
             overflow="show"/>
-                </Box>}
+    </Box>}*/}
             </WithHeading>
     )
 }
