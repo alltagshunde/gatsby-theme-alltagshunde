@@ -169,6 +169,21 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         isColored: {
           type: "Boolean",
         },
+        button: {
+          type: "String",
+        },
+        buttonLink: {
+          type: "String",
+        },
+        buttonLink2: {
+          type: "String",
+        },
+        buttonSize: {
+          type: "String",
+        },
+        buttonTop: {
+          type: "Boolean",
+        },
       },
     }),
   ]
@@ -208,6 +223,9 @@ exports.createPages = async ({ graphql, actions }) => {
               isBanner
               button
               buttonLink
+              buttonLink2
+              buttonSize
+              buttonTop
               whatsapp
               facebook
               email
