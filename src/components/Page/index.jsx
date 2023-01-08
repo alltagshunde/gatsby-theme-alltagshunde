@@ -31,7 +31,7 @@ export default Page
 const getRowColor = (isColored) => isColored ? 'primaryMuted2' : 'background'
 
 const computeRows = buildingBlocks => {
-  console.log('BB', buildingBlocks)
+  //console.log('BB', buildingBlocks)
 
   const rows = []
   let currentRow = {}
@@ -42,7 +42,7 @@ const computeRows = buildingBlocks => {
     if (buildingBlock.hasOwnProperty('width') && buildingBlock.width !== '1') {
       const columns = getNumberOfColumns(buildingBlock.width)
       const span = getColumnSpan(buildingBlock.width)
-      console.log('BBB', buildingBlock.type, hasCurrentRow, columns, span)
+      //console.log('BBB', buildingBlock.type, hasCurrentRow, columns, span)
 
       if (!hasCurrentRow || columns !== currentRow.columns || span > currentRow.openSlots) {
         if (hasCurrentRow) {
@@ -69,7 +69,7 @@ const computeRows = buildingBlocks => {
     rows.push(currentRow)
   }
 
-  console.log('BBR', rows)
+  //console.log('BBR', rows)
 
   return rows
 }

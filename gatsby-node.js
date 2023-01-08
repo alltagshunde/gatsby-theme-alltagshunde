@@ -144,6 +144,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         },
         image: {
           type: "File",
+          extensions: {
+            fileByRelativePath: {},
+          },
         },
         caption: {
           type: "String",

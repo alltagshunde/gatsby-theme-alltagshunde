@@ -4,7 +4,7 @@ backend:
 
 local_backend: true
 
-site_url: https://hopeful-lamarr-a320e6.netlify.com
+site_url: https://www.alltagshunde-training.de
 
 locale: "de"
 
@@ -20,7 +20,7 @@ collections:
     label: Navigation
     extension: yml
     editor:
-     preview: false
+      preview: false
     files:
       - label: Einträge
         name: entries
@@ -34,8 +34,8 @@ collections:
                 name: page
                 widget: relation
                 collection: pages
-                searchFields: [title]
-                valueField: title
+                search_fields: [title]
+                value_field: title
                 options_length: 50
                 hint: "Die Seite, die in der Navigation verlinkt werden soll."
               - label: Titel
@@ -52,11 +52,11 @@ collections:
     extension: yml
     media_folder: ""
     public_folder: ""
-#    slug: "{{slug}}"
+    #    slug: "{{slug}}"
     preview_path: "{{title}}"
     create: true
     editor:
-     preview: false
+      preview: false
     fields:
       - label: Titel
         name: title
@@ -71,8 +71,8 @@ collections:
         name: parentPage
         widget: relation
         collection: pages
-        searchFields: [title]
-        valueField: title
+        search_fields: [title]
+        value_field: title
         options_length: 50
         required: false
         hint: "Auswählen wenn diese Seite eine Unterseite der Hauptseiten (z.B. Betreuung) ist."
@@ -81,18 +81,18 @@ collections:
         label_singular: Baustein
         widget: list
         types:
-        - name: text
-          label: Text
-          widget: object
-            summary: "{{fields.heading}}"
-          fields:
-            - label: Überschrift
-              name: heading
-              widget: string
-              required: false
-            - label: Text
-              name: text
-              widget: markdown
+          - name: text
+            label: Text
+            widget: object
+            summary: "{{heading}}"
+            fields:
+              - label: Überschrift
+                name: heading
+                widget: string
+                required: false
+              - label: Text
+                name: text
+                widget: markdown
                 buttons:
                   [
                     bold,
@@ -103,256 +103,264 @@ collections:
                     bulleted-list,
                     numbered-list,
                   ]
-              editorComponents: []
-              required: false
-            - label: Äußere Breite
-              name: width
-              widget: select
-              options: 
-                - {label: "100%", value: "1"}
-                - {label: "75%", value: "3/4"}
-                - {label: "66%", value: "2/3"}
-                - {label: "50%", value: "1/2"}
-                - {label: "33%", value: "1/3"}
-                - {label: "25%", value: "1/4"}
-              default: "1"
-            - label: Überschrift Level
-              name: headingLevel
-              widget: select
-              options: ["1", "2", "3", "4", "5", "6"]
-              default: "1"
-              hint: "1 ist am größten, 6 am kleinsten. Das Level solle aber nicht nur nach der Größe ausgesucht werden, sondern die Struktur der Seite repräsentieren. Das ist auch für SEO wichtig. Falls die Darstellungsgröße vom Level abweichen soll, kann 'Überschrift Größe' gesetzt werden."
-            - label: Überschrift Größe
-              name: headingSize
-              widget: select
-              required: false
-              options: ["1", "2", "3", "4", "5", "6"]
-              hint: "1 ist am größten, 6 am kleinsten."
-            - label: Überschrift zentrieren
-              name: headingCentered
-              widget: boolean
-              default: true
-            - label: Farbiger Hintergrund
-              name: isColored
-              widget: boolean
-              default: false
-              required: false
-              hint: "Bei mehreren Bausteinen in einer Reihe zählt die Einstellung des ersten."
-        - name: image
-          label: Bild
-          widget: object
-            summary: "{{fields.image}}"
-          fields:
-            - label: Bild
-              name: image
-              widget: image
-            - label: Äußere Breite
-              name: width
-              widget: select
-              options: 
-                - {label: "100%", value: "1"}
-                - {label: "75%", value: "3/4"}
-                - {label: "66%", value: "2/3"}
-                - {label: "50%", value: "1/2"}
-                - {label: "33%", value: "1/3"}
-                - {label: "25%", value: "1/4"}
-              default: "1"
-              hint: "Wieviel Prozent der verfügbaren Breite soll das Bild einnehmen? Der übrige Platz wird dann von vorhergehenden oder folgenden Elementen eingenommen."
-            - label: Innere Breite
-              name: innerWidth
-              widget: select
-              options: 
-                - {label: "100%", value: "1"}
-                - {label: "75%", value: "3/4"}
-                - {label: "66%", value: "2/3"}
-                - {label: "50%", value: "1/2"}
-                - {label: "33%", value: "1/3"}
-                - {label: "25%", value: "1/4"}
-              default: "1"
-              required: false
-              hint: "Falls das Bild nicht die ganze zugewiesene äußere Breite ausfüllen soll."
-            - label: Banner
-              name: isBanner
-              widget: boolean
-              default: false
-              required: false
-              hint: "Soll das Bild ein Banner sein, das auch die weißen Ränder am Rand ausfüllt? Funktioniert nur mit 100% äußerer Breite."
-            - label: Farbiger Hintergrund
-              name: isColored
-              widget: boolean
-              default: false
-              required: false
-              hint: "Bei mehreren Bausteinen in einer Reihe zählt die Einstellung des ersten."
-        - name: card
-          label: Karte
-          widget: object
-            summary: "{{fields.heading - fields.image}}"
-          fields:
-            - label: Bild
-              name: image
-              widget: image
-              required: false
-            - label: Titel
-              name: heading
-              widget: string
-              required: false
-            - label: Text
-              name: text
-              widget: markdown
-              buttons: [bold, italic, link, bulleted-list, numbered-list]
-              editorComponents: []
-              required: false
-            - label: Verlinkte Seite
-              name: buttonLink
-              widget: relation
-              collection: pages
-              searchFields: [title]
-              valueField: title
-              required: false
+                editor_components: []
+                required: false
+              - label: Äußere Breite
+                name: width
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+              - label: Überschrift Level
+                name: headingLevel
+                widget: select
+                options: ["1", "2", "3", "4", "5", "6"]
+                default: "1"
+                hint: "1 ist am größten, 6 am kleinsten. Das Level solle aber nicht nur nach der Größe ausgesucht werden, sondern die Struktur der Seite repräsentieren. Das ist auch für SEO wichtig. Falls die Darstellungsgröße vom Level abweichen soll, kann 'Überschrift Größe' gesetzt werden."
+              - label: Überschrift Größe
+                name: headingSize
+                widget: select
+                required: false
+                options: ["1", "2", "3", "4", "5", "6"]
+                hint: "1 ist am größten, 6 am kleinsten."
+              - label: Überschrift zentrieren
+                name: headingCentered
+                widget: boolean
+                default: true
+              - label: Farbiger Hintergrund
+                name: isColored
+                widget: boolean
+                default: false
+                required: false
+                hint: "Bei mehreren Bausteinen in einer Reihe zählt die Einstellung des ersten."
+          - name: image
+            label: Bild
+            widget: object
+            summary: "{{image}}"
+            fields:
+              - label: Bild
+                name: image
+                widget: image
+              - label: Äußere Breite
+                name: width
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+                hint: "Wieviel Prozent der verfügbaren Breite soll das Bild einnehmen? Der übrige Platz wird dann von vorhergehenden oder folgenden Elementen eingenommen."
+              - label: Innere Breite
+                name: innerWidth
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+                required: false
+                hint: "Falls das Bild nicht die ganze zugewiesene äußere Breite ausfüllen soll."
+              - label: Banner
+                name: isBanner
+                widget: boolean
+                default: false
+                required: false
+                hint: "Soll das Bild ein Banner sein, das auch die weißen Ränder am Rand ausfüllt? Funktioniert nur mit 100% äußerer Breite."
+              - label: Farbiger Hintergrund
+                name: isColored
+                widget: boolean
+                default: false
+                required: false
+                hint: "Bei mehreren Bausteinen in einer Reihe zählt die Einstellung des ersten."
+          - name: card
+            label: Karte
+            widget: object
+            summary: "{{heading}} | {{image}}"
+            fields:
+              - label: Bild
+                name: image
+                widget: image
+                required: false
+              - label: Titel
+                name: heading
+                widget: string
+                required: false
+              - label: Text
+                name: text
+                widget: markdown
+                buttons: [bold, italic, link, bulleted-list, numbered-list]
+                editor_components: []
+                required: false
+              - label: Verlinkte Seite
+                name: buttonLink
+                widget: relation
+                collection: pages
+                search_fields: [title]
+                value_field: title
+                required: false
                 options_length: 50
-              hint: "Die Seite, die bei Klick auf den Button geöffnet wird."
-            - label: Link-Text
-              name: button
-              widget: string
-              required: false
-              hint: "Der Text der im Button angezeigt wird."
-            - label: Äußere Breite
-              name: width
-              widget: select
-              options: 
-                - {label: "100%", value: "1"}
-                - {label: "75%", value: "3/4"}
-                - {label: "66%", value: "2/3"}
-                - {label: "50%", value: "1/2"}
-                - {label: "33%", value: "1/3"}
-                - {label: "25%", value: "1/4"}
-              default: "1"
-            - label: Innere Breite
-              name: innerWidth
-              widget: select
-              options: 
-                - {label: "100%", value: "1"}
-                - {label: "75%", value: "3/4"}
-                - {label: "66%", value: "2/3"}
-                - {label: "50%", value: "1/2"}
-                - {label: "33%", value: "1/3"}
-                - {label: "25%", value: "1/4"}
-              default: "1"
-              required: false
-              hint: "Falls die Karte nicht die ganze zugewiesene äußere Breite ausfüllen soll."
-            - label: Farbiger Hintergrund
-              name: isColored
-              widget: boolean
-              default: false
-              required: false
-              hint: "Bei mehreren Bausteinen in einer Reihe zählt die Einstellung des ersten."
-        - name: message
-          label: Nachricht senden
-          widget: object
-          fields:
-            - label: Überschrift
-              name: heading
-              widget: string
-              required: false
-            - label: Bild
-              name: image
-              widget: image
-            - label: Äußere Breite
-              name: width
-              widget: select
-              options: 
-                - {label: "100%", value: "1"}
-                - {label: "75%", value: "3/4"}
-                - {label: "66%", value: "2/3"}
-                - {label: "50%", value: "1/2"}
-                - {label: "33%", value: "1/3"}
-                - {label: "25%", value: "1/4"}
-              default: "1"
-            - label: Überschrift Level
-              name: headingLevel
-              widget: select
-              options: ["1", "2", "3", "4", "5", "6"]
-              default: "1"
-              hint: "1 ist am größten, 6 am kleinsten. Das Level solle aber nicht nur nach der Größe ausgesucht werden, sondern die Struktur der Seite repräsentieren. Das ist auch für SEO wichtig. Falls die Darstellungsgröße vom Level abweichen soll, kann 'Überschrift Größe' gesetzt werden."
-            - label: Überschrift Größe
-              name: headingSize
-              widget: select
-              required: false
-              options: ["1", "2", "3", "4", "5", "6"]
-              hint: "1 ist am größten, 6 am kleinsten."
-            - label: Überschrift zentrieren
-              name: headingCentered
-              widget: boolean
-              default: true
-            - label: Banner
-              name: isBanner
-              widget: hidden
-              default: true
-        - name: contact
-          label: Kontakt Icons
-          widget: object
-          fields:
-            - label: Überschrift
-              name: heading
-              widget: string
-              required: false
-            - label: Whatsapp anzeigen
-              name: whatsapp
-              widget: boolean
-              default: true
-            - label: Facebook anzeigen
-              name: facebook
-              widget: boolean
-              default: true
-            - label: Email anzeigen
-              name: email
-              widget: boolean
-              default: true
-            - label: Äußere Breite
-              name: width
-              widget: select
-              options: 
-                - {label: "100%", value: "1"}
-                - {label: "75%", value: "3/4"}
-                - {label: "66%", value: "2/3"}
-                - {label: "50%", value: "1/2"}
-                - {label: "33%", value: "1/3"}
-                - {label: "25%", value: "1/4"}
-              default: "1"
-            - label: Innere Breite
-              name: innerWidth
-              widget: select
-              options: 
-                - {label: "100%", value: "1"}
-                - {label: "75%", value: "3/4"}
-                - {label: "66%", value: "2/3"}
-                - {label: "50%", value: "1/2"}
-                - {label: "33%", value: "1/3"}
-                - {label: "25%", value: "1/4"}
-              default: "1"
-              required: false
-            - label: Überschrift Level
-              name: headingLevel
-              widget: select
-              options: ["1", "2", "3", "4", "5", "6"]
-              default: "1"
-              hint: "1 ist am größten, 6 am kleinsten. Das Level solle aber nicht nur nach der Größe ausgesucht werden, sondern die Struktur der Seite repräsentieren. Das ist auch für SEO wichtig. Falls die Darstellungsgröße vom Level abweichen soll, kann 'Überschrift Größe' gesetzt werden."
-            - label: Überschrift Größe
-              name: headingSize
-              widget: select
-              required: false
-              options: ["1", "2", "3", "4", "5", "6"]
-              hint: "1 ist am größten, 6 am kleinsten."
-            - label: Überschrift zentrieren
-              name: headingCentered
-              widget: boolean
-              default: true
-            - label: Farbiger Hintergrund
-              name: isColored
-              widget: boolean
-              default: false
-              required: false
-              hint: "Bei mehreren Bausteinen in einer Reihe zählt die Einstellung des ersten."
+                hint: "Die Seite, die bei Klick auf den Button geöffnet wird."
+              - label: Link-Text
+                name: button
+                widget: string
+                required: false
+                hint: "Der Text der im Button angezeigt wird."
+              - label: Äußere Breite
+                name: width
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+              - label: Innere Breite
+                name: innerWidth
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+                required: false
+                hint: "Falls die Karte nicht die ganze zugewiesene äußere Breite ausfüllen soll."
+              - label: Farbiger Hintergrund
+                name: isColored
+                widget: boolean
+                default: false
+                required: false
+                hint: "Bei mehreren Bausteinen in einer Reihe zählt die Einstellung des ersten."
+          - name: message
+            label: Nachricht senden
+            widget: object
+            fields:
+              - label: Überschrift
+                name: heading
+                widget: string
+                required: false
+              - label: Bild
+                name: image
+                widget: image
+              - label: Äußere Breite
+                name: width
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+              - label: Überschrift Level
+                name: headingLevel
+                widget: select
+                options: ["1", "2", "3", "4", "5", "6"]
+                default: "1"
+                hint: "1 ist am größten, 6 am kleinsten. Das Level solle aber nicht nur nach der Größe ausgesucht werden, sondern die Struktur der Seite repräsentieren. Das ist auch für SEO wichtig. Falls die Darstellungsgröße vom Level abweichen soll, kann 'Überschrift Größe' gesetzt werden."
+              - label: Überschrift Größe
+                name: headingSize
+                widget: select
+                required: false
+                options: ["1", "2", "3", "4", "5", "6"]
+                hint: "1 ist am größten, 6 am kleinsten."
+              - label: Überschrift zentrieren
+                name: headingCentered
+                widget: boolean
+                default: true
+              - label: Banner
+                name: isBanner
+                widget: hidden
+                default: true
+          - name: contact
+            label: Kontakt Icons
+            widget: object
+            fields:
+              - label: Überschrift
+                name: heading
+                widget: string
+                required: false
+              - label: Whatsapp anzeigen
+                name: whatsapp
+                widget: boolean
+                default: true
+              - label: Facebook anzeigen
+                name: facebook
+                widget: boolean
+                default: true
+              - label: Email anzeigen
+                name: email
+                widget: boolean
+                default: true
+              - label: Buchung anzeigen
+                name: booking
+                widget: boolean
+                default: false
+              - label: Buchung URL
+                name: bookingUrl
+                widget: string
+                required: false
+              - label: Äußere Breite
+                name: width
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+              - label: Innere Breite
+                name: innerWidth
+                widget: select
+                options:
+                  - { label: "100%", value: "1" }
+                  - { label: "75%", value: "3/4" }
+                  - { label: "66%", value: "2/3" }
+                  - { label: "50%", value: "1/2" }
+                  - { label: "33%", value: "1/3" }
+                  - { label: "25%", value: "1/4" }
+                default: "1"
+                required: false
+              - label: Überschrift Level
+                name: headingLevel
+                widget: select
+                options: ["1", "2", "3", "4", "5", "6"]
+                default: "1"
+                hint: "1 ist am größten, 6 am kleinsten. Das Level solle aber nicht nur nach der Größe ausgesucht werden, sondern die Struktur der Seite repräsentieren. Das ist auch für SEO wichtig. Falls die Darstellungsgröße vom Level abweichen soll, kann 'Überschrift Größe' gesetzt werden."
+              - label: Überschrift Größe
+                name: headingSize
+                widget: select
+                required: false
+                options: ["1", "2", "3", "4", "5", "6"]
+                hint: "1 ist am größten, 6 am kleinsten."
+              - label: Überschrift zentrieren
+                name: headingCentered
+                widget: boolean
+                default: true
+              - label: Farbiger Hintergrund
+                name: isColored
+                widget: boolean
+                default: false
+                required: false
+                hint: "Bei mehreren Bausteinen in einer Reihe zählt die Einstellung des ersten."
           - name: booking
             label: Buchung
             widget: object
@@ -398,10 +406,10 @@ collections:
         name: contact
         file: "content/site/contact.yml"
         fields:
-          - {label: contact, name: contact, widget: hidden, default: true}
-          - {label: Whatsapp Nummer, name: whatsapp, widget: string}
-          - {label: Facebook Gruppe, name: facebook, widget: string}
-          - {label: Email Adresse, name: email, widget: string}
+          - { label: contact, name: contact, widget: hidden, default: true }
+          - { label: Whatsapp Nummer, name: whatsapp, widget: string }
+          - { label: Facebook Gruppe, name: facebook, widget: string }
+          - { label: Email Adresse, name: email, widget: string }
       - label: Partner
         name: partners
         file: "content/site/partners.yml"
@@ -410,5 +418,5 @@ collections:
             name: partner
             widget: list
             fields:
-              - {label: Name, name: name, widget: string}
-              - {label: URL, name: url, widget: string}
+              - { label: Name, name: name, widget: string }
+              - { label: URL, name: url, widget: string }
