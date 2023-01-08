@@ -155,7 +155,7 @@ collections:
                 default: "3"
                 required: false
                 options: ["2", "3", "4", "5"]
-                hint: "1 ist am größten, 6 am kleinsten."
+                hint: "2 ist am kleinsten, 5 am größten."
               - label: Button oben
                 name: buttonTop
                 widget: boolean
